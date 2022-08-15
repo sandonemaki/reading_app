@@ -25,3 +25,8 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+# ocr_api_key
+app/api/secret_read.rb
+
+vendor/
+
