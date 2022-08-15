@@ -1,11 +1,10 @@
 <div class="pageimage">
-  <%#= img src="http://masaland.cocolog-nifty.com/photos/uncategorized/2016/02/10/bookpdf01a.jpg" %>
+  <img src="http://masaland.cocolog-nifty.com/photos/uncategorized/2016/02/10/bookpdf01a.jpg">
 </div>
 
 <!--上が表示されない場合-->
-<div>
-  <%= link_to "文章画像を表示", "http://masaland.cocolog-nifty.com/photos/uncategorized/2016/02/10/bookpdf01a.jpg", target: :_blank, rel: "noopener noreferrer" %>
-</div>
-<div>
-  <%= link_to "画像をテキストデータにする", '/voicetexts/new' %>
-</div>
+<%= form_tag("/voicetexts/create") do %>
+<% image_url = "http://masaland.cocolog-nifty.com/photos/uncategorized/2016/02/10/bookpdf01a.jpg" %>
+  <input type="hidden" name="image_url" value="http://masaland.cocolog-nifty.com/photos/uncategorized/2016/02/10/bookpdf01a.jpg"}>
+  <input type="submit" value="画像をテキストデータにする">
+<% end %>
