@@ -1,2 +1,31 @@
-<h1>Voicetexts#new</h1>
-<p>Find me in app/views/voicetexts/new.html.erb</p>
+<div>
+		<textarea id="text" name="text" cols="100" rows="10"><%= voicetext.voicetext %></textarea>
+</div>
+<button onclick="readAloud()">読み上げる</button>
+<button onclick="stopAloud()" id="cancel-btn">停止する</button>
+<p>上記テキストを読み上げます。<br>「読み上げる」ボタンをクリックしてください。</p>
+
+<script>
+function readAloud() {
+  // テキストを取得
+  const text = document.getElementById("text").value
+
+  // ブラウザにWeb Speech API Speech Synthesis機能があるか判定
+  if ('speechSynthesis' in window) {
+    // 発言を設定
+    const uttr = new SpeechSynthesisUtterance()
+    uttr.text = text
+		uttr.lang = "ja-JP"
+    // 発言を再生
+    window.speechSynthesis.speak(uttr)
+
+  } else {
+    alert('大変申し訳ありません。このブラウザは音声合成に対応していません。')
+  }
+}
+
+	function stopAloud() {
+		// 再生停止 (発言キューをクリアして止まる)
+    speechSynthesis.cancel()
+	}
+</script>
